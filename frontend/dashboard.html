@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NTC AI Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <h2>NTC AI</h2>
+
+    <button onclick="go('dashboard.html')">Dashboard</button>
+
+    <hr>
+
+    <h4>AI CORE</h4>
+    <button onclick="go('documents.html')">Documents</button>
+    <button onclick="go('assistant.html')">Assistant</button>
+    <button onclick="go('compliance.html')">Compliance</button>
+    <button onclick="go('tenders.html')">Tenders</button>
+    <button onclick="go('security.html')">Security</button>
+
+    <hr>
+
+    <h4>MONITORING</h4>
+    <button onclick="go('audit.html')">Audit</button>
+    <button onclick="go('alerts.html')">Alerts</button>
+    <button onclick="go('logs.html')">Logs</button>
+    <button onclick="go('analytics.html')">Analytics</button>
+
+    <hr>
+
+    <h4>MANAGEMENT</h4>
+    <button onclick="go('users.html')">👤 Users</button>
+    <button onclick="go('roles.html')">🔐 Roles</button>
+    <button onclick="go('settings.html')">⚙ Settings</button>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <h1>Dashboard Overview</h1>
+
+      <div class="userbox">
+        <span>Admin</span>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="grid">
+
+      <div class="card">
+        📄 Documents<br>
+        <b>1,250</b>
+      </div>
+
+      <div class="card">
+        📊 Compliance Issues<br>
+        <b>12</b>
+      </div>
+
+      <div class="card">
+        🚨 Security Alerts<br>
+        <b>3</b>
+      </div>
+
+      <div class="card">
+        👥 Active Users<br>
+        <b>45</b>
+      </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <h2>Quick Actions</h2>
+
+    <div class="grid">
+
+      <div class="card clickable" onclick="go('assistant.html')">
+        🤖 AI Assistant
+      </div>
+
+      <div class="card clickable" onclick="go('documents.html')">
+        📄 Upload Documents
+      </div>
+
+      <div class="card clickable" onclick="go('security.html')">
+        🛡 Security Center
+      </div>
+
+      <div class="card clickable" onclick="go('alerts.html')">
+        🚨 View Alerts
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/navigation.js"></script>
+
+</body>
+</html>

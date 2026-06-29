@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Documents</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="ntc-topbar">
+  NTC
+  <div class="nav">
+    <button onclick="location.href='dashboard.html'">Dashboard</button>
+    <button onclick="location.href='assistant.html'">Assistant</button>
+    <button onclick="location.href='documents.html'">Documents</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <h2>📄 Document Manager</h2>
+
+  <div class="card">
+    <input type="file" id="file">
+    <br><br>
+
+    <button onclick="upload()" style="background:#2563eb;color:white;">
+      Upload Document
+    </button>
+
+    <p id="status"></p>
+  </div>
+
+  <h3>Uploaded Files</h3>
+
+  <div id="docs"></div>
+
+</div>
+
+<script>
+
+async function upload() {
+  let file = document.getElementById("file").files[0];
+
+  let form = new FormData();
+  form.append("file", file);
+
+  document.getElementById("status").innerText = "Uploading... (0/20)";
+
+  let res = await fetch("http://localhost:8000/api/upload", {
+    method: "POST",
+    body: form
+  });
+
+  let data = await res.json();
+
+  document.getElementById("status").innerText = "Uploaded: " + data.filename;
+
+  loadDocs();
+}
+
+async function loadDocs() {
+  let res = await fetch("http://localhost:8000/api/docs");
+  let data = await res.json();
+
+  let box = document.getElementById("docs");
+  box.innerHTML = "";
+
+  for (let id in data) {
+    box.innerHTML += `
+      <div class="card" style="display:flex;justify-content:space-between;">
+        <span>📄 ${data[id]}</span>
+        <button onclick="del('${id}')" style="background:#ef4444;color:white;">
+          Delete
+        </button>
+      </div>
+    `;
+  }
+}
+
+async function del(id) {
+  await fetch("http://localhost:8000/api/docs/" + id, {
+    method: "DELETE"
+  });
+
+  loadDocs();
+}
+
+loadDocs();
+
+</script>
+
+</body>
+</html>

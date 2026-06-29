@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assistant</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="ntc-topbar">
+  NTC
+  <div class="nav">
+    <button onclick="location.href='dashboard.html'">Dashboard</button>
+    <button onclick="location.href='documents.html'">Documents</button>
+    <button onclick="location.href='assistant.html'">Assistant</button>
+  </div>
+</div>
+
+<div class="chat-container">
+
+  <!-- SIDEBAR -->
+  <div class="chat-sidebar">
+
+    <div class="new-chat">+ New Chat</div>
+
+    <h4 style="color:#94a3b8;">Documents</h4>
+    <select id="docs" style="padding:8px;border-radius:6px;"></select>
+
+    <div class="chat-list" id="history"></div>
+
+  </div>
+
+  <!-- CHAT MAIN -->
+  <div class="chat-main">
+
+    <div class="chat-box" id="chat"></div>
+
+    <div class="chat-input">
+      <input id="input" placeholder="Message NTC Assistant...">
+      <button onclick="ask()">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let activeDoc = null;
+
+async function loadDocs() {
+  let res = await fetch("http://localhost:8000/api/docs");
+  let docs = await res.json();
+
+  let sel = document.getElementById("docs");
+  sel.innerHTML = "";
+
+  for (let id in docs) {
+    sel.innerHTML += `<option value="${id}">${docs[id]}</option>`;
+  }
+
+  activeDoc = Object.keys(docs)[0];
+}
+
+document.getElementById("docs").onchange = e => {
+  activeDoc = e.target.value;
+};
+
+function addMsg(text, type) {
+  let div = document.createElement("div");
+  div.className = "msg " + type;
+  div.innerText = text;
+  document.getElementById("chat").appendChild(div);
+  div.scrollIntoView();
+}
+
+async function ask() {
+  let q = document.getElementById("input").value;
+  if (!q) return;
+
+  addMsg(q, "user");
+  addMsg("Thinking...", "ai");
+
+  let res = await fetch("http://localhost:8000/api/ask", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      doc_id: activeDoc,
+      question: q
+    })
+  });
+
+  let data = await res.json();
+
+  document.querySelectorAll(".msg").forEach((m, i, arr) => {
+    if (i === arr.length - 1 && m.innerText === "Thinking...") m.remove();
+  });
+
+  addMsg(data.answer, "ai");
+  document.getElementById("input").value = "";
+}
+
+loadDocs();
+
+</script>
+
+</body>
+</html>

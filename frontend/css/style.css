@@ -1,0 +1,376 @@
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* =========================
+   SIDEBAR (CLEAN DARK UI)
+========================= */
+
+.sidebar {
+  width: 220px;
+  background: #0f172a;
+  padding: 18px;
+  overflow-y: auto;
+  color: white;
+  border-right: 1px solid #1f2937;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #efeff0;
+}
+
+.sidebar h4 {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 16px 0 6px;
+  letter-spacing: 0.5px;
+}
+
+/* REMOVE UGLY LINES (IMPORTANT FIX) */
+.sidebar hr {
+  display: none;
+}
+
+/* Sidebar buttons (CLEAN VERSION) */
+.sidebar button {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 3px 0;
+  background: transparent;
+  border: none;              /* ❌ removes white lines */
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: 0.01s ease;
+}
+
+.sidebar button:hover {
+  background: #cac7cd;
+  color: #ffffff;
+}
+
+/* =========================
+   MAIN AREA (WHITE CLEAN)
+========================= */
+
+.main {
+  flex: 1;
+  padding: 22px;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar h1,h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* =========================
+   CARD (MODERN SAAS STYLE)
+========================= */
+
+.card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: small;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+}
+
+/* clickable cards */
+.clickable {
+  cursor: pointer;
+  background: #f9fafb;
+}
+
+.clickable:hover {
+  background: #b4bac4;
+}
+
+/* =========================
+   BUTTONS (GLOBAL CLEAN)
+========================= */
+
+button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* logout button */
+.logout {
+  background: #ef4444;
+  color: white;
+}
+.card button {
+  background: #ef4444;
+  color: rgb(21, 19, 19);
+}
+
+.logout:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   LOGIN PAGE (CLEAN)
+========================= */
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f4f6;
+}
+
+.login-card {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  width: 340px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 10px;
+  background: #101113;
+  color: white;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.login-card button:hover {
+  background: #5e5e60;
+}
+
+/* =========================
+   NTC TOP BAR (GLOBAL)
+========================= */
+
+.ntc-topbar {
+  height: 50px;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.ntc-topbar .nav {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.ntc-topbar .nav button {
+  background: transparent;
+  color: #e5e7eb;
+  border: none;
+  cursor: pointer;
+}
+
+.ntc-topbar .nav button:hover {
+  color: white;
+}
+
+/* =========================
+   CHATGPT STYLE LAYOUT
+========================= */
+
+.chat-container {
+  display: flex;
+  height: calc(100vh - 50px);
+}
+
+/* LEFT SIDEBAR */
+.chat-sidebar {
+  width: 260px;
+  background: #0b1220;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.new-chat {
+  background: #2563eb;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.new-chat:hover {
+  background: #1d4ed8;
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-item {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #cbd5e1;
+}
+
+.chat-item:hover {
+  background: #1e293b;
+  color: white;
+}
+
+/* MAIN CHAT AREA */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+}
+
+/* messages */
+.chat-box {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.msg {
+  max-width: 60%;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+
+.msg.user {
+  background: #2563eb;
+  color: white;
+  margin-left: auto;
+}
+
+.msg.ai {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* input bar (ChatGPT style bottom) */
+.chat-input {
+  display: flex;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+}
+
+/* =========================
+   FIX: ASSISTANT SIDEBAR WHITE ONLY
+========================= */
+
+.chat-sidebar {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* text inside sidebar becomes dark */
+.chat-sidebar .new-chat {
+  background: #111827;
+  color: white;
+}
+
+.chat-sidebar select {
+  background: #f9fafb;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+
+.chat-item {
+  color: #374151;
+}
+
+.chat-item:hover {
+  background: #f3f4f6;
+  color: #111827;
+}

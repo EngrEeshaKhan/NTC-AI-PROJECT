@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+
+pypdf==6.13.1
+sentence-transformers
+faiss-cpu
+numpy
+requests
