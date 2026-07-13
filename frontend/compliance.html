@@ -1,1 +1,231 @@
-<h1>Compliance coming soon</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Compliance Intelligence</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     TOP NAVIGATION
+========================================== -->
+
+<div class="ntc-topbar">
+
+    <div style="font-size:17px">
+        NTC 
+    </div>
+
+    <div class="nav">
+
+        <button onclick="location.href='dashboard.html'">
+            Dashboard
+        </button>
+
+        <button onclick="location.href='documents.html'">
+            Documents
+        </button>
+
+        <button onclick="location.href='assistant.html'">
+            Assistant
+        </button>
+
+        <button onclick="location.href='compliance.html'">
+            Compliance
+        </button>
+
+        <button onclick="location.href='tenders.html'">
+            Tenders
+        </button>
+
+        <button onclick="location.href='security.html'">
+            Security
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     MAIN CONTENT
+========================================== -->
+
+<div class="main">
+
+    <h2>Compliance Intelligence</h2>
+
+    <p>
+
+        Upload multiple policy documents, upload a complaint,
+        analyze compliance against organizational policies,
+        and ask follow-up questions.
+
+    </p>
+
+    <div class="compliance-grid">
+
+        <!-- ============================= -->
+        <!-- POLICY -->
+        <!-- ============================= -->
+
+        <div class="compliance-card">
+
+            <h3>📚 Policy Knowledge Base</h3>
+
+            <p>
+
+                Upload one or more policy PDF files.
+
+            </p>
+
+            <input
+                type="file"
+                id="policyFiles"
+                multiple
+                accept=".pdf">
+
+            <button onclick="uploadPolicies()">
+
+                Upload Policies
+
+            </button>
+
+            <div class="status-box" id="policyStatus">
+
+                No policy uploaded.
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- COMPLAINT -->
+        <!-- ============================= -->
+
+        <div class="compliance-card">
+
+            <h3>📝 Complaint Upload</h3>
+
+            <p>
+
+                Upload a complaint document.
+
+            </p>
+
+            <input
+                type="file"
+                id="complaintFile"
+                accept=".pdf,.doc,.docx,.txt">
+
+            <button onclick="uploadComplaint()">
+
+                Upload Complaint
+
+            </button>
+
+            <div class="status-box" id="complaintStatus">
+
+                No complaint uploaded.
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- ANALYSIS -->
+        <!-- ============================= -->
+
+        <div class="compliance-card">
+
+            <h3>🔍 Compliance Analysis</h3>
+
+            <p>
+
+                Compare the uploaded complaint against
+                all uploaded policies.
+
+            </p>
+
+            <button onclick="analyzeComplaint()">
+
+                Analyze Complaint
+
+            </button>
+
+            <br><br>
+
+            <textarea
+
+                id="analysisResult"
+
+                placeholder="Compliance report will appear here..."
+
+                readonly>
+
+            </textarea>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- CHAT -->
+        <!-- ============================= -->
+
+        <div class="compliance-card">
+
+            <h3>💬 Compliance Chat</h3>
+
+            <p>
+
+                Ask questions about the complaint,
+                policies, clauses or recommendations.
+
+            </p>
+
+            <textarea
+
+                id="chatQuestion"
+
+                placeholder="Example: Which policy clause is violated?">
+
+            </textarea>
+
+            <br>
+
+            <button onclick="askCompliance()">
+
+                Ask AI
+
+            </button>
+
+            <br><br>
+
+            <textarea
+
+                id="chatAnswer"
+
+                placeholder="AI response..."
+
+                readonly>
+
+            </textarea>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/navigation.js"></script>
+<script src="js/compliance.js"></script>
+
+</body>
+
+</html>
