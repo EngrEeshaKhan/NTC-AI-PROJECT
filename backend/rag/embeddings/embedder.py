@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("C:/local_models/embeddings")
 
 def embed(texts):
     return model.encode(texts).astype("float32")

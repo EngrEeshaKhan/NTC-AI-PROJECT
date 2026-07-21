@@ -24,26 +24,35 @@ async function uploadPolicies() {
         formData.append("files", files[i]);
     }
 
+
     document.getElementById("policyStatus").innerHTML =
         "Uploading policies...";
+
 
     try {
 
         const response = await fetch(API + "/upload-policies", {
+
             method: "POST",
+
             body: formData
+
         });
+
 
         const data = await response.json();
 
+
         document.getElementById("policyStatus").innerHTML =
-            data.message;
+            `${data.uploaded} policy file(s) uploaded successfully.`;
 
     }
+
 
     catch (err) {
 
         console.log(err);
+
 
         document.getElementById("policyStatus").innerHTML =
             "Upload failed.";
@@ -53,45 +62,71 @@ async function uploadPolicies() {
 }
 
 
+
 // ==========================================
 // Upload Complaint
 // ==========================================
 async function uploadComplaint() {
 
+
     const file = document.getElementById("complaintFile").files[0];
 
+
     if (!file) {
+
         alert("Please select a complaint file.");
+
         return;
+
     }
+
 
     let formData = new FormData();
 
-    formData.append("file", file);
+
+    formData.append(
+        "file",
+        file
+    );
+
 
     document.getElementById("complaintStatus").innerHTML =
         "Uploading complaint...";
 
+
+
     try {
+
 
         const response = await fetch(API + "/upload-complaint", {
 
+
             method: "POST",
+
 
             body: formData
 
+
         });
+
+
 
         const data = await response.json();
 
+
+
         document.getElementById("complaintStatus").innerHTML =
-            data.message;
+            "Complaint uploaded successfully.";
 
     }
 
+
+
     catch (err) {
 
+
         console.log(err);
+
 
         document.getElementById("complaintStatus").innerHTML =
             "Upload failed.";
@@ -107,27 +142,40 @@ async function uploadComplaint() {
 // ==========================================
 async function analyzeComplaint() {
 
+
     document.getElementById("analysisResult").value =
         "Analyzing complaint...\nPlease wait...";
 
+
     try {
+
 
         const response = await fetch(API + "/analyze", {
 
+
             method: "POST"
+
 
         });
 
+
+
         const data = await response.json();
 
+
+
         document.getElementById("analysisResult").value =
-            data.report;
+            data.report || JSON.stringify(data, null, 2);
 
     }
 
+
+
     catch (err) {
 
+
         console.log(err);
+
 
         document.getElementById("analysisResult").value =
             "Analysis failed.";
@@ -143,46 +191,75 @@ async function analyzeComplaint() {
 // ==========================================
 async function askCompliance() {
 
+
     const question =
         document.getElementById("chatQuestion").value;
 
+
+
     if (question.trim() === "") {
+
         return;
+
     }
+
+
 
     document.getElementById("chatAnswer").value =
         "Thinking...";
 
+
+
     try {
+
 
         const response = await fetch(API + "/chat", {
 
+
             method: "POST",
+
 
             headers: {
 
+
                 "Content-Type": "application/json"
+
 
             },
 
+
             body: JSON.stringify({
+
 
                 question: question
 
+
             })
+
 
         });
 
+
+
         const data = await response.json();
+
+
 
         document.getElementById("chatAnswer").value =
             data.answer;
 
+
+
     }
+
+
 
     catch (err) {
 
+
         console.log(err);
+
+
 
         document.getElementById("chatAnswer").value =
             "Unable to get response.";
