@@ -240,7 +240,6 @@ Data Storage
 - Python
 - FastAPI
 - FAISS
-- Sentence Transformers
 - Ollama
 - PyPDF
 - NumPy
