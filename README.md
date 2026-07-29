@@ -8,7 +8,7 @@ The platform combines semantic search, Large Language Models (LLMs), vector data
 
 # Overview
 
-NTC AI Platform is designed to help organizations interact with internal documents using natural language while also providing automated compliance analysis against organizational policies.
+NTC AI Platform is designed to help organizations interact with internal documents using natural language while also providing automated compliance analysis against organizational policies
 
 Instead of manually searching hundreds of pages of policy documents, users can:
 
