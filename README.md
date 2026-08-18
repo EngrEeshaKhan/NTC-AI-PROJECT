@@ -12,7 +12,7 @@ NTC AI Platform is designed to help organizations interact with internal documen
 
 Instead of manually searching hundreds of pages of policy documents, users can:
 
-- Upload documents
+- Upload documents.
 - Ask questions in natural language
 - Retrieve accurate answers using Retrieval-Augmented Generation (RAG)
 - Upload complaints
